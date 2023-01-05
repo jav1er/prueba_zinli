@@ -1,7 +1,10 @@
-import React from 'react'
+import Register from "../components/Register/Register";
+import Layout from "../layout/Layout";
 
 export default function register() {
   return (
-    <div>register</div>
+    <Layout>
+      <Register />
+    </Layout>
   )
 }
