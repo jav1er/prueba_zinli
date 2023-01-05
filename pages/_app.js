@@ -1,16 +1,23 @@
 import "../styles/globals.scss";
 
-import { useMemo, useState, useEffect } from "react"
-import { GlobalData } from "../context/GlobalData"
+import { useMemo, useState, useEffect } from "react";
+import { GlobalData } from "../context/GlobalData";
 
 export default function App({ Component, pageProps }) {
-  const [formOneData, setFormOneData] = useState("");
+  const [formLoginData, setFormLoginData] = useState("");
+  const [formRegisterData, setFormRegisterData] = useState("");
+  const [formPostData, setformPostData] = useState("");
 
   const formsData = useMemo(
     (_) => ({
-      formOneData,
+      formLoginData,
+      setFormLoginData,
+      formRegisterData,
+      setFormRegisterData,
+      formPostData,
+      setformPostData,
     }),
-    [formOneData]
+    [formLoginData, formRegisterData, formPostData]
   );
 
   return (

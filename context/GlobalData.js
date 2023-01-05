@@ -1,6 +1,10 @@
-import { createContext } from "react"
+import { createContext } from "react";
 
 export const GlobalData = createContext({
-  formOneData: null,
-  setFormOneData: () => null,
-})
+  formLoginData: null,
+  setFormLoginData: () => null,
+  formRegisterData: null,
+  setFormRegisterData: () => null,
+  formPostData: null,
+  setformPostData: () => null,
+});
