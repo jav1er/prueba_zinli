@@ -1,0 +1,21 @@
+.containersearchbar {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid grey;
+  height: auto;
+  gap: 45px;
+
+  h2 {
+    margin-left: 35px;
+    font-size: 32px;
+  }
+
+  .form-searchbar {
+    input {
+      height: 41px;
+      width: 203px;
+      border-radius: 4px;
+      border: 1px solid blueviolet;
+    }
+  }
+}
