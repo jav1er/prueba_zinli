@@ -7,6 +7,12 @@ export default function App({ Component, pageProps }) {
   const [formLoginData, setFormLoginData] = useState("");
   const [formRegisterData, setFormRegisterData] = useState("");
   const [formPostData, setformPostData] = useState("");
+  const [reloadUser, setReloadUser] = useState(false);
+
+  useEffect(() => {
+    console.log("recargar");
+
+  },[reloadUser]);
 
   const formsData = useMemo(
     (_) => ({
@@ -16,8 +22,10 @@ export default function App({ Component, pageProps }) {
       setFormRegisterData,
       formPostData,
       setformPostData,
+      reloadUser,
+      setReloadUser,
     }),
-    [formLoginData, formRegisterData, formPostData]
+    [formLoginData, formRegisterData, formPostData, reloadUser]
   );
 
   return (

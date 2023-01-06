@@ -7,4 +7,6 @@ export const GlobalData = createContext({
   setFormRegisterData: () => null,
   formPostData: null,
   setformPostData: () => null,
+  reloadUser: null,
+  setReloadUser: () => null,
 });
