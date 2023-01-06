@@ -1,0 +1,10 @@
+.dashboardPage {
+  .containerDash {
+    display: flex;
+    .firstCln {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+    }
+  }
+}

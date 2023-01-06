@@ -1,32 +1,28 @@
 import Image from "next/image";
 export default function Post({ product }) {
-  const { image, title, content, url } = product;
+  //const { image, title, content, url } = product;
+
+
+  {/* image?: string;
+      message: string;
+      likes?: Array<User>;
+      author: User;
+      create_at: Date;
+      location: string;
+      status: 'drafted' | 'deleted' | 'published';
+      */}
   return (
     <article className="post">
       <div className="post-picture">
         <Image
-          src={image}
+          src={
+            "https://loremflickr.com/cache/resized/65535_52116912043_0186366fc0_z_540_400_nofilter.jpg"
+          }
           alt="title"
           width={270}
           height={204}
           className="post-image"
         />
-      </div>
-      <div className="post-content">
-        <h3 className="post-title">
-          <a href={url} target="_blank" rel="noopener noreferrer">
-            {title}
-          </a>
-        </h3>
-        <p className="post-description">{content}</p>
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="post-link"
-        >
-          Ver más
-        </a>
       </div>
     </article>
   );
