@@ -65,6 +65,9 @@ export default function Register() {
       localStorage.setItem("userRegister", data);
       console.log(formRegisterData);
       setReloadUser((x) => !x);
+      alert('registro exitoso puede hacer login')
+      router.push("/");
+
     }
 
     console.log(formRegisterData);
