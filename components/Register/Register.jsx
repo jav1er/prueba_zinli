@@ -47,7 +47,7 @@ export default function Register() {
     mode: "onChange",
     resolver: yupResolver(schema),
     defaultValues: {
-      avatar: "",
+      avatar:"https://loremflickr.com/cache/resized/65535_52116912043_0186366fc0_z_540_400_nofilter.jpg",
       username: "",
       name: "",
       surname: "",
@@ -65,9 +65,8 @@ export default function Register() {
       localStorage.setItem("userRegister", data);
       console.log(formRegisterData);
       setReloadUser((x) => !x);
-      alert('registro exitoso puede hacer login')
+      alert("registro exitoso puede hacer login");
       router.push("/");
-
     }
 
     console.log(formRegisterData);

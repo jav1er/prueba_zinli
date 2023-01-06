@@ -1,5 +1,6 @@
 import Post from "../components/Post/Post";
 import SearchBar from "../components/SearchBar/SearchBar";
+import Perfil from "../components/Perfil/Perfil";
 import Image from "next/image";
 
 export default function dashboard() {
@@ -12,7 +13,7 @@ export default function dashboard() {
           <Post />
         </div>
         <div className="secundCln">
-          <div className="perfil"> cuadro perfil </div>
+          <Perfil />
         </div>
       </div>
     </div>

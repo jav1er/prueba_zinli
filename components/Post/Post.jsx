@@ -2,17 +2,24 @@ import Image from "next/image";
 export default function Post({ product }) {
   //const { image, title, content, url } = product;
 
-
-  {/* image?: string;
+  {
+    /* image?: string;
       message: string;
       likes?: Array<User>;
       author: User;
       create_at: Date;
       location: string;
       status: 'drafted' | 'deleted' | 'published';
-      */}
+      */
+  }
   return (
     <article className="post">
+      <div className="head-post">
+        <div className="img-avatar">imagen avatar</div>
+
+        <span>@neytirl </span>
+      </div>
+
       <div className="post-picture">
         <Image
           src={
@@ -23,6 +30,14 @@ export default function Post({ product }) {
           height={204}
           className="post-image"
         />
+      </div>
+
+      <div className="description-post">
+        <div> corazon</div>
+
+        <div> imagen </div>
+
+        <div> texto </div>
       </div>
     </article>
   );
