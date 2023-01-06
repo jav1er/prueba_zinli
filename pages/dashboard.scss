@@ -1,0 +1,26 @@
+.dashboardPage {
+  .containerDash {
+    display: flex;
+    gap: 60px;
+    .firstCln {
+      display: flex;
+      flex-direction: column;
+
+      .formulario {
+        margin-left: 30px;
+        border: 1px solid red;
+        height: 460px;
+        width: 500px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    .secundCln {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

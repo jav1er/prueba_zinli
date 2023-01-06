@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 
 const schema = yup
   .object({
-    nombre: yup
+    username: yup
       .string()
       .required("Este campo es requerido")
       .min(2, "minimo 2 numeros")
@@ -17,7 +17,8 @@ const schema = yup
   .required();
 
 export default function Login() {
-  const { formLoginData, setFormLoginData } = useData();
+  const { formLoginData, setFormLoginData, formRegisterData, setReloadUser } =
+    useData();
 
   const router = useRouter();
 
@@ -25,6 +26,9 @@ export default function Login() {
     router.push("/register");
   };
 
+  const goDashBoard = () => {
+    router.push("/dashboard");
+  };
   const {
     register,
     handleSubmit,
@@ -33,7 +37,7 @@ export default function Login() {
     mode: "onChange",
     resolver: yupResolver(schema),
     defaultValues: {
-      nombre: "",
+      username: "",
     },
   });
 
@@ -47,13 +51,13 @@ export default function Login() {
 
     if (isValid) {
       setFormLoginData(data);
-      console.log("setiando data ");
-      console.log(formLoginData);
+      if (formRegisterData.username == data.username) {
+        goDashBoard();
+      } else {
+        alert("el usuario no existe registrese");
+        router.push("/register");
+      }
     }
-
-    console.log(data);
-    // setFormOneData({ ...data, amount })
-    // setFormOneStatus(isValid)
   };
 
   return (
@@ -70,10 +74,10 @@ export default function Login() {
                   placeholder="@username"
                   className="input"
                   type="text"
-                  {...register("nombre")}
+                  {...register("username")}
                 />
-                {errors.nombre?.message && (
-                  <p className="message">{errors.nombre?.message}</p>
+                {errors.username?.message && (
+                  <p className="message">{errors.username?.message}</p>
                 )}
               </div>
               <button disabled={!isValid} type="submit" className="button">
