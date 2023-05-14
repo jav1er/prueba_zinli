@@ -11,15 +11,15 @@ function currentKey(key) {
 
 function getStorageValue(key) {
   if (typeof window !== "undefined") {
-    const saved = localStorage.getItem(currentKey(key))
+    const savedCollection = localStorage.getItem(currentKey(key))
       ? JSON.parse(localStorage.getItem(currentKey(key)))
       : [];
-    return saved;
+    return savedCollection;
   }
 }
 
 export const useLocalStorage = (key) => {
-  const [value, setValue] = useState(() => {
+  const [arrayCollection, setValue] = useState(() => {
     return getStorageValue(key);
   });
 
@@ -30,10 +30,6 @@ export const useLocalStorage = (key) => {
     });
   };
 
-  //   const delete_id = (key, value) => {
-  //     DB = DB.filter((x) => x[key] != value);
-  //     window.localStorage.setItem(currentKey(), JSON.stringify(DB));
-  //   };
 
-  return [value, setLocalStorage];
+  return [arrayCollection, setLocalStorage /*getData*/];
 };

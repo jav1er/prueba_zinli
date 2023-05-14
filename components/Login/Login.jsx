@@ -4,6 +4,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import useData from "../../hooks/useData";
 import * as yup from "yup";
 import { useRouter } from "next/router";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+import useSerchUser from "../../hooks/useSerchCollection";
 
 const schema = yup
   .object({
@@ -20,6 +22,8 @@ export default function Login() {
   const { formLoginData, setFormLoginData, formRegisterData, setReloadUser } =
     useData();
 
+  const [arrayCollection, setLocalStorage] = useLocalStorage("register-data");
+  const [searchValue] = useSerchUser("register-data");
   const router = useRouter();
 
   const goRegister = () => {
@@ -41,22 +45,25 @@ export default function Login() {
     },
   });
 
+  // useEffect(() => {
+  //   console.log(errors);
+  // }, [errors]);
+
   useEffect(() => {
-    console.log(errors);
-  }, [errors]);
+    console.log(arrayCollection);
+  }, [arrayCollection]);
 
   const onSubmit = async (data) => {
-    console.log(formLoginData);
-    console.log(errors);
+    let toSerch = ["username", data.username];
 
-    if (isValid) {
+    let isRegisteredUser = searchValue(...toSerch);
+
+    if (isValid && isRegisteredUser) {
       setFormLoginData(data);
-      if (formRegisterData.username == data.username) {
-        goDashBoard();
-      } else {
-        alert("el usuario no existe registrese");
-        router.push("/register");
-      }
+      goDashBoard();
+    } else {
+      alert("el usuario no existe registrese");
+      router.push("/register");
     }
   };
 
