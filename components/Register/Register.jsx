@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import useData from "../../hooks/useData";
 import * as yup from "yup";
 import { useRouter } from "next/router";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 const schema = yup
   .object({
@@ -31,8 +32,11 @@ const schema = yup
   .required();
 
 export default function Register() {
+
   const { formRegisterData, setFormRegisterData, setReloadUser } = useData();
 
+  const localStorageKey = "register-data"
+  const [value, setLocalStorage] = useLocalStorage(localStorageKey);
   const router = useRouter();
 
   const goLogin = () => {
@@ -47,29 +51,24 @@ export default function Register() {
     mode: "onChange",
     resolver: yupResolver(schema),
     defaultValues: {
-      avatar:"https://loremflickr.com/cache/resized/65535_52116912043_0186366fc0_z_540_400_nofilter.jpg",
-      username: "",
-      name: "",
-      surname: "",
+      avatar:
+        "https://loremflickr.com/cache/resized/65535_52309465858_4c4842665e_z_540_400_nofilter.jpg",
+      username: "ttttt",
+      name: "tttttt",
+      surname: "ttttt",
     },
   });
 
-  useEffect(() => {
-    console.log(errors);
-  }, [errors]);
+  // useEffect(() => {
+  //   console.log(errors);
+  // }, [errors]);
 
   const onSubmit = async (data) => {
     if (isValid) {
-      setFormRegisterData(data);
-      //localStorage.setItem("username", formLoginData.username);
-      localStorage.setItem("userRegister", data);
-      console.log(formRegisterData);
-      setReloadUser((x) => !x);
+      setLocalStorage(data);
       alert("registro exitoso puede hacer login");
       router.push("/");
     }
-
-    console.log(formRegisterData);
     // setFormOneData({ ...data, amount })
     // setFormOneStatus(isValid)
   };
