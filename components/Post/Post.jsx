@@ -23,7 +23,7 @@ export default function Post({ product }) {
       <div className="post-picture">
         <Image
           src={
-            "https://loremflickr.com/cache/resized/65535_52309465858_4c4842665e_z_540_400_nofilter.jpg"
+            "https://loremflickr.com/cache/resized/65535_52893558487_b5dcac7206_n_320_240_nofilter.jpg"
           }
           alt="title"
           width={270}

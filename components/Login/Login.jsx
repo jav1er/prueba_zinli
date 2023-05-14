@@ -6,6 +6,7 @@ import * as yup from "yup";
 import { useRouter } from "next/router";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import useSerchUser from "../../hooks/useSerchCollection";
+import useValidatedCollection from "../../hooks/useValidatedCollection";
 
 const schema = yup
   .object({
@@ -22,8 +23,11 @@ export default function Login() {
   const { formLoginData, setFormLoginData, formRegisterData, setReloadUser } =
     useData();
 
-  const [arrayCollection, setLocalStorage] = useLocalStorage("register-data");
+  const [arrayCollection] = useLocalStorage("register-data");
+  const [, setUserLogged] = useLocalStorage("user-logged");
   const [searchValue] = useSerchUser("register-data");
+  const [searchc] = useValidatedCollection("register-data");
+  //const [searchValue] = useSerchUser("user-logged");
   const router = useRouter();
 
   const goRegister = () => {
@@ -41,7 +45,7 @@ export default function Login() {
     mode: "onChange",
     resolver: yupResolver(schema),
     defaultValues: {
-      username: "",
+      username: "rangel",
     },
   });
 
@@ -57,9 +61,11 @@ export default function Login() {
     let toSerch = ["username", data.username];
 
     let isRegisteredUser = searchValue(...toSerch);
+    let objectUserRegister = searchc(...toSerch);
 
     if (isValid && isRegisteredUser) {
       setFormLoginData(data);
+      setUserLogged(objectUserRegister);
       goDashBoard();
     } else {
       alert("el usuario no existe registrese");

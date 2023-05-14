@@ -32,11 +32,11 @@ const schema = yup
   .required();
 
 export default function Register() {
-
   const { formRegisterData, setFormRegisterData, setReloadUser } = useData();
 
-  const localStorageKey = "register-data"
-  const [value, setLocalStorage] = useLocalStorage(localStorageKey);
+  const localStorageKey = "register-data";
+  const [ value, setLocalStorage] = useLocalStorage(localStorageKey);
+
   const router = useRouter();
 
   const goLogin = () => {
@@ -52,8 +52,8 @@ export default function Register() {
     resolver: yupResolver(schema),
     defaultValues: {
       avatar:
-        "https://loremflickr.com/cache/resized/65535_52309465858_4c4842665e_z_540_400_nofilter.jpg",
-      username: "ttttt",
+        "https://loremflickr.com/cache/resized/65535_52893558487_b5dcac7206_n_320_240_nofilter.jpg",
+      username: "rangel",
       name: "tttttt",
       surname: "ttttt",
     },
@@ -67,7 +67,8 @@ export default function Register() {
     if (isValid) {
       setLocalStorage(data);
       alert("registro exitoso puede hacer login");
-      router.push("/");
+
+      setTimeout(_ => router.push("/"), 4000);
     }
     // setFormOneData({ ...data, amount })
     // setFormOneStatus(isValid)
@@ -78,7 +79,7 @@ export default function Register() {
       <section className="formSection">
         <div className="container">
           <div className="wrapper">
-            <h1 className="title">Digital Tech Ing</h1>
+            <h1 className="title">Digital Tech Ing  </h1>
           </div>
           <div className="content-register">
             <form onSubmit={handleSubmit(onSubmit)} className="form-register">

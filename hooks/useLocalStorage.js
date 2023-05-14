@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-const PROJECT_NAME = "zinli";
+import { useState } from "react";
+const PROJECT_NAME = "Digital-Tech";
 
 function today() {
   return new Date().toJSON().slice(0, 10);
@@ -23,13 +23,20 @@ export const useLocalStorage = (key) => {
     return getStorageValue(key);
   });
 
-  const setLocalStorage = (obj) => {
+  const updateLocalStorage = (obj) => {
     setValue((v) => {
       v = [...v, obj];
       return localStorage.setItem(currentKey(key), JSON.stringify(v));
     });
   };
 
+  const setLocalStorage = (obj) =>{
+    setValue((v) => {
+      v = [obj];
+      return localStorage.setItem(currentKey(key), JSON.stringify(v));
+    });
+  }
 
-  return [arrayCollection, setLocalStorage /*getData*/];
+
+  return [arrayCollection, setLocalStorage, updateLocalStorage ];
 };
