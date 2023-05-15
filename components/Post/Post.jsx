@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { default as NextImage } from "next/image";
 export default function Post({ product }) {
   //const { image, title, content, url } = product;
 
@@ -21,7 +21,7 @@ export default function Post({ product }) {
       </div>
 
       <div className="post-picture">
-        <Image
+        <NextImage
           src={
             "https://loremflickr.com/cache/resized/65535_52893558487_b5dcac7206_n_320_240_nofilter.jpg"
           }
@@ -29,6 +29,7 @@ export default function Post({ product }) {
           width={270}
           height={204}
           className="post-image"
+          priority
         />
       </div>
 

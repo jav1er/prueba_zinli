@@ -12,7 +12,6 @@ export default function Perfil() {
 
   useEffect(() => {
     console.log("en perfil");
-
     if (typeof window !== "undefined") {
       setState(collection);
     }
@@ -30,7 +29,7 @@ export default function Perfil() {
             width={30}
             height={30}
             className="perfil-image"
-            priority={true}
+            priority
           />
           <p>{`${state[0].username}`} </p>
         </div>
