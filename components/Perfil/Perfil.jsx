@@ -1,5 +1,5 @@
 import useData from "../../hooks/useData";
-import Image from "next/image";
+import { default as NextImage } from "next/image";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import useValidatedCollection from "../../hooks/useValidatedCollection";
 import { useEffect, useState } from "react";
@@ -24,12 +24,13 @@ export default function Perfil() {
     return (
       <div className="perfil">
         <div className=" group-one">
-          <Image
+          <NextImage
             src={`${state[0].avatar}`}
             alt="title"
             width={30}
             height={30}
             className="perfil-image"
+            priority={true}
           />
           <p>{`${state[0].username}`} </p>
         </div>
