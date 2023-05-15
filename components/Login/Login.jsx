@@ -25,8 +25,8 @@ export default function Login() {
 
   const [arrayCollection] = useLocalStorage("register-data");
   const [, setUserLogged] = useLocalStorage("user-logged");
-  const [searchValue] = useSerchUser("register-data");
-  const [searchc] = useValidatedCollection("register-data");
+  const [validatedUser] = useSerchUser("register-data");
+  const [searchcValidatedUser] = useValidatedCollection("register-data");
   //const [searchValue] = useSerchUser("user-logged");
   const router = useRouter();
 
@@ -60,16 +60,16 @@ export default function Login() {
   const onSubmit = async (data) => {
     let toSerch = ["username", data.username];
 
-    let isRegisteredUser = searchValue(...toSerch);
-    let objectUserRegister = searchc(...toSerch);
+    let isRegisteredUser = validatedUser(...toSerch);
+    let objectUserRegister = searchcValidatedUser(...toSerch);
 
     if (isValid && isRegisteredUser) {
       setFormLoginData(data);
       setUserLogged(objectUserRegister);
       goDashBoard();
     } else {
-      alert("el usuario no existe registrese");
-      router.push("/register");
+      alert("El usuario no existe registrese");
+      goRegister();
     }
   };
 
