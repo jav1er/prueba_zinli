@@ -35,7 +35,7 @@ export default function Register() {
   const { formRegisterData, setFormRegisterData, setReloadUser } = useData();
 
   const localStorageKey = "register-data";
-  const [ value, setLocalStorage] = useLocalStorage(localStorageKey);
+  const [, , updateLocalStorage] = useLocalStorage(localStorageKey);
 
   const router = useRouter();
 
@@ -65,10 +65,10 @@ export default function Register() {
 
   const onSubmit = async (data) => {
     if (isValid) {
-      setLocalStorage(data);
+      updateLocalStorage(data);
       alert("registro exitoso puede hacer login");
 
-      setTimeout(_ => router.push("/"), 4000);
+      setTimeout((_) => router.push("/"), 1000);
     }
     // setFormOneData({ ...data, amount })
     // setFormOneStatus(isValid)
@@ -79,7 +79,7 @@ export default function Register() {
       <section className="formSection">
         <div className="container">
           <div className="wrapper">
-            <h1 className="title">Digital Tech Ing  </h1>
+            <h1 className="title">Digital Tech Ing </h1>
           </div>
           <div className="content-register">
             <form onSubmit={handleSubmit(onSubmit)} className="form-register">
