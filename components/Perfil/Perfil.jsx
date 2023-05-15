@@ -2,13 +2,14 @@ import useData from "../../hooks/useData";
 import Image from "next/image";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import useValidatedCollection from "../../hooks/useValidatedCollection";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Perfil() {
   //const { formRegisterData } = useData();
   const localStorageKey = "user-logged";
 
   const [collection] = useLocalStorage(localStorageKey);
+  const [state, setState] = useState([]);
 
   // const [searchValue] = useValidatedCollection(localStorageKey);
 
@@ -17,33 +18,45 @@ export default function Perfil() {
 
   useEffect(() => {
     console.log("en perfil");
-    console.log(collection);
 
-    // console.log("a mostrar");
-    // console.log(collection);
-  }, [collection]);
+    if (typeof window !== "undefined") {
+      setState(
+        JSON.parse(localStorage.getItem("Digital-Tech:2023-05-14:user-logged"))
+      );
+    }
+  }, []);
 
-  if (!collection || collection.length === 0) {
+  if (!state || state.length === 0) {
     return null;
+  } else {
+    return (
+      <div className="perfil">
+        <div className=" group-one">
+          <Image
+            src={`${state[0].avatar}`}
+            alt="title"
+            width={30}
+            height={30}
+            className="perfil-image"
+          />
+          <p>{`${state[0].username}`} </p>
+        </div>
+
+        <div className=" group-two">
+          <div> {`${state[0].name}`}</div>
+          <p> 220 publicaciones </p>
+        </div>
+      </div>
+    );
   }
 
-  return (
-    <div className="perfil">
-      <div className=" group-one">
-        <Image
-          src={`${collection[0].avatar}`}
-          alt="title"
-          width={30}
-          height={30}
-          className="perfil-image"
-        />
-        <p>{`${collection[0].username}`} </p>
-      </div>
-
-      <div className=" group-two">
-        <div> {`${collection[0].name}`}</div>
-        <p> 220 publicaciones </p>
-      </div>
-    </div>
-  );
+  // // initialRenderComplete will be false on the first render and true on all following renders
+  // if (!initialRenderComplete) {
+  // 	// Returning null will prevent the component from rendering, so the content will simply be missing from
+  // 	// the server HTML and also wont render during the first client-side render.
+  // 	return null;
+  // } else {
+  // 	const date = new Date();
+  // 	return <time>{date}</time>;
+  // }
 }
