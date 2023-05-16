@@ -9,7 +9,7 @@ export default function dashboard() {
       <SearchBar />
       <div className="containerDash">
         <div className="firstCln">
-          <div className="formulario"> Formulario </div>
+          <div className="formulario"> Formulario para crear publicacion </div>
           <Post />
         </div>
         <div className="secundCln">

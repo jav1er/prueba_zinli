@@ -1,17 +1,38 @@
 .dashboardPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+
+
   .containerDash {
     display: flex;
+    flex-wrap: wrap;
+    // justify-content: flex-start;
+    // align-items: center;
+    // flex-direction: row;
+    // max-width: 900px;
+    // width: 900px;
+    
+    background: #eaffc2;
+    
     gap: 60px;
+
+
+
     .firstCln {
       display: flex;
       flex-direction: column;
+      padding: 30px 0px 0px 30px;
+      width: 500px;
 
+      background: lavenderblush;
       .formulario {
-        margin-left: 30px;
+        
         border: 1px solid red;
-        height: 460px;
-        width: 500px;
-
+        height: 250px;
+        width: 450px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -19,8 +40,10 @@
     }
 
     .secundCln {
+      background: red;
       display: flex;
       flex-direction: column;
+      width: 280px ;
     }
   }
 }
